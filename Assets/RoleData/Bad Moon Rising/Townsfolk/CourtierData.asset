@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
+  m_Name: CourtierData
+  m_EditorClassIdentifier: 
+  RolePrefab: {fileID: 1481770009761832, guid: e020a838a990a674fb756badda041d2d, type: 3}
+  RoleName: Courtier
+  RoleType: 0
+  FirstNightOrder: 16
+  OtherNightOrder: 14
