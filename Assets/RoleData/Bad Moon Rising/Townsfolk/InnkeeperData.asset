@@ -17,3 +17,8 @@ MonoBehaviour:
   RoleType: 0
   FirstNightOrder: -1
   OtherNightOrder: 13
+  RoleTokenSprite: {fileID: 0}
+  HelperTokenSprites:
+  - {fileID: 21300000, guid: 6bcf8943743475e45b937d3c8f1de403, type: 3}
+  - {fileID: 21300000, guid: 323b20334dbf0f54e83978e78ba5633c, type: 3}
+  - {fileID: 21300000, guid: 323b20334dbf0f54e83978e78ba5633c, type: 3}

@@ -16,6 +16,8 @@ public class GrimoireManager : MonoBehaviour
     List<GrimoireToken> BluffTokens = new List<GrimoireToken>();
     List<GameObject> AlignmentTokens = new List<GameObject>();
 
+    public GameObject RoleTokenPrefab;
+    public GameObject HelperTokenPrefab;
     public GameObject AlignmentTokenPrefab;
 
     public GameObject BluffTokenAttach;
@@ -59,15 +61,15 @@ public class GrimoireManager : MonoBehaviour
 
     public void AddToken(RoleData roleData)
     {
-        GameObject tokenObj = Instantiate(roleData.RolePrefab);
+        GameObject tokenObj = Instantiate(RoleTokenPrefab);
+        tokenObj.transform.SetParent(transform);
         tokenObj.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
         GrimoireToken grimoireToken = tokenObj.GetComponentInChildren<GrimoireToken>();
         grimoireToken.name = "RoleToken:" + roleData.RoleName;
-        grimoireToken.RoleData = roleData;
-        grimoireToken.transform.SetParent(transform);
+        grimoireToken.SetRoleData(roleData);
 
-        if (grimoireToken.AddToGrimoire)
+        if (roleData.AddToGrimoire)
         {
             RoleTokens.Add(grimoireToken);
         }
@@ -76,18 +78,21 @@ public class GrimoireManager : MonoBehaviour
             grimoireToken.gameObject.SetActive(false);
             HiddenTokens.Add(grimoireToken);
         }
-
-        grimoireToken.HelperTokens = tokenObj.GetComponentsInChildren<HelperToken>();
-        foreach (var helperToken in grimoireToken.HelperTokens)
+        
+        foreach (var helperTokenSprite in roleData.HelperTokenSprites)
         {
-            helperToken.transform.SetParent(HelperTokenAttach.transform);
-            helperToken.transform.localScale = Vector3.one;
+            GameObject helperTokenObj = Instantiate(HelperTokenPrefab);
+            helperTokenObj.transform.SetParent(HelperTokenAttach.transform);
+            helperTokenObj.transform.localScale = Vector3.one;
+
+            HelperToken helperToken = helperTokenObj.GetComponentInChildren<HelperToken>();
             helperToken.FreeTransform = transform;
+            helperToken.SetSprite(helperTokenSprite);
+
+            grimoireToken.AddHelperToken(helperToken);
         }
 
         grimoireToken.SetScale(Mathf.Lerp(MinTokenScale, MaxTokenScale, ScaleSlider.value));
-
-        Object.Destroy(tokenObj);
 
         UpdateGrimoire();
         UpdateRoleCounts();
@@ -102,20 +107,14 @@ public class GrimoireManager : MonoBehaviour
             if (tokenIndex < 0)
                 return;
 
-            foreach (var helperToken in HiddenTokens[tokenIndex].HelperTokens)
-            {
-                Object.Destroy(helperToken.gameObject);
-            }
+            HiddenTokens[tokenIndex].DestroyHelperTokens();
 
             Object.Destroy(HiddenTokens[tokenIndex].gameObject);
             HiddenTokens.RemoveAt(tokenIndex);
             return;
         }
 
-        foreach (var helperToken in RoleTokens[tokenIndex].HelperTokens)
-        {
-            Object.Destroy(helperToken.gameObject);
-        }
+        RoleTokens[tokenIndex].DestroyHelperTokens();
 
         Object.Destroy(RoleTokens[tokenIndex].gameObject);
         RoleTokens.RemoveAt(tokenIndex);
@@ -125,27 +124,19 @@ public class GrimoireManager : MonoBehaviour
 
     public void AddBluffToken(RoleData roleData)
     {
-        GameObject tokenObj = Instantiate(roleData.RolePrefab);
+        GameObject tokenObj = Instantiate(RoleTokenPrefab);
+        tokenObj.transform.SetParent(BluffTokenAttach.transform);
         tokenObj.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
         GrimoireToken grimoireToken = tokenObj.GetComponentInChildren<GrimoireToken>();
         grimoireToken.name = "BluffToken:" + roleData.RoleName;
         grimoireToken.NameText.gameObject.SetActive(false);
         grimoireToken.SetUseTargetPos(false);
-        grimoireToken.RoleData = roleData;
-        grimoireToken.transform.SetParent(BluffTokenAttach.transform);
+        grimoireToken.SetRoleData(roleData);
         grimoireToken.SetTargetPos(grimoireToken.transform.position);
         grimoireToken.transform.localScale = Vector3.one * 0.75f;
         grimoireToken.SetIsBluffToken();
         BluffTokens.Add(grimoireToken);
-
-        HelperToken[] helperTokens = tokenObj.GetComponentsInChildren<HelperToken>();
-        foreach (var helperToken in grimoireToken.HelperTokens)
-        {
-            Object.Destroy(helperToken.gameObject);
-        }
-
-        Object.Destroy(tokenObj);
     }
 
     public void RemoveBluffToken(RoleData roleData)
@@ -168,21 +159,13 @@ public class GrimoireManager : MonoBehaviour
     {
         foreach (var token in RoleTokens)
         {
-            foreach (var helperToken in token.HelperTokens)
-            {
-                Object.Destroy(helperToken.gameObject);
-            }
-
+            token.DestroyHelperTokens();
             Object.Destroy(token.gameObject);
         }
 
         foreach (var token in HiddenTokens)
         {
-            foreach (var helperToken in token.HelperTokens)
-            {
-                Object.Destroy(helperToken.gameObject);
-            }
-
+            token.DestroyHelperTokens();
             Object.Destroy(token.gameObject);
         }
 
@@ -375,5 +358,18 @@ public class GrimoireManager : MonoBehaviour
 
         Object.Destroy(AlignmentTokens[0]);
         AlignmentTokens.RemoveAt(0);
+    }
+
+    public void ResetHelperTokens()
+    {
+        foreach (var token in RoleTokens)
+        {
+            token.ResetHelperTokens(HelperTokenAttach.transform);
+        }
+
+        foreach (var token in HiddenTokens)
+        {
+            token.ResetHelperTokens(HelperTokenAttach.transform);
+        }
     }
 }

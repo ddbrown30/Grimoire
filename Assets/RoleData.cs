@@ -14,12 +14,15 @@ public enum RoleType
 [CreateAssetMenu(fileName = "RoleData", menuName = "ScriptableObjects/RoleData", order = 1)]
 public class RoleData : ScriptableObject
 {
-    public GameObject RolePrefab;
     public string RoleName;
     public RoleType RoleType;
     public int FirstNightOrder = -1;
     public int OtherNightOrder = -1;
 
+    public Sprite RoleTokenSprite;
+    public Sprite[] HelperTokenSprites;
+    
+    public bool AddToGrimoire = true;
 
     public static Color[] RoleColors = { new Color(0, 0.6f, 1), new Color(0, 0.6f, 1), Color.red, Color.red, Color.magenta};
 }

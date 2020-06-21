@@ -11,18 +11,17 @@ public class GrimoireToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IDr
 
     public Image DeadMarker;
     public InputField NameText;
-    public Sprite TokenSprite;
 
-    public bool AddToGrimoire = true;
+    public Image RoleTokenImage;
 
     bool UseTargetPos = true;
     Vector2 TargetPos = new Vector2();
     public void SetTargetPos(Vector2 targetPos) { TargetPos = targetPos; }
     public void SetUseTargetPos(bool use) { UseTargetPos = use; }
 
-    public RoleData RoleData;
+    public RoleData RoleData { private set;  get; }
 
-    public HelperToken[] HelperTokens;
+    List<HelperToken> HelperTokens = new List<HelperToken>();
 
     RectTransform RectTrans;
 
@@ -79,6 +78,35 @@ public class GrimoireToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IDr
         NameText.text = name;
     }
 
+    public void SetRoleData(RoleData roleData)
+    {
+        RoleData = roleData;
+        RoleTokenImage.sprite = RoleData.RoleTokenSprite;
+    }
+
+    public void AddHelperToken(HelperToken helperToken)
+    {
+        HelperTokens.Add(helperToken);
+    }
+
+    public void DestroyHelperTokens()
+    {
+        foreach (var helperToken in HelperTokens)
+        {
+            Object.Destroy(helperToken.gameObject);
+        }
+
+        HelperTokens.Clear();
+    }
+
+    public void ResetHelperTokens(Transform attachTransform)
+    {
+        foreach (var helperToken in HelperTokens)
+        {
+            helperToken.transform.SetParent(attachTransform);
+        }
+    }
+
     public void SetIsBluffToken()
     {
         IsBluffToken = true;
@@ -121,7 +149,7 @@ public class GrimoireToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IDr
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        GrimoireManager.Instance.SetHoverTarget(TokenSprite);
+        GrimoireManager.Instance.SetHoverTarget(RoleData.RoleTokenSprite);
     }
 
     public void OnPointerExit(PointerEventData eventData)

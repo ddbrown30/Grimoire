@@ -20,7 +20,7 @@ public class NightEntry : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerEnter(PointerEventData eventData)
     {
         if(RoleData)
-            GrimoireManager.Instance.SetHoverTarget(RoleData.RolePrefab.GetComponentInChildren<GrimoireToken>().TokenSprite);
+            GrimoireManager.Instance.SetHoverTarget(RoleData.RoleTokenSprite);
     }
 
     public void OnPointerExit(PointerEventData eventData)
