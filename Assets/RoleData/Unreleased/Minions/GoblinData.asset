@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
+  m_Name: GoblinData
+  m_EditorClassIdentifier: 
+  RoleName: Goblin
+  RoleType: 2
+  FirstNightOrder: -1
+  OtherNightOrder: -1
+  IsNightOrderAfterDawn: 0
+  RoleTokenSprite: {fileID: 21300000, guid: 9dc8a7919fb9da24faf3fd5e249ba175, type: 3}
+  HelperTokenSprites:
+  - {fileID: 21300000, guid: 58a48c50f089fa248b2093ccd8c27f78, type: 3}
+  AddToGrimoire: 1

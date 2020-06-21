@@ -18,16 +18,19 @@ public class RoleSelectionManager : MonoBehaviour
     public Toggle TroubleBrewingToggle;
     public Toggle BadMoonRisingToggle;
     public Toggle SectsAndVioletsToggle;
+    public Toggle UnreleasedToggle;
 
     public Toggle TravelersToggle;
 
     public RoleData[] TroubleBrewingData;
     public RoleData[] BadMoonRisingData;
     public RoleData[] SectsAndVioletsData;
+    public RoleData[] UnreleasedData;
 
     public RoleData[] TroubleBrewingTravelerData;
     public RoleData[] BadMoonRisingTravelerData;
     public RoleData[] SectsAndVioletsTravelerData;
+    public RoleData[] UnreleasedTravelerData;
 
     public GameObject RoleEntry;
     public GameObject RoleEntryDivider;
@@ -65,7 +68,7 @@ public class RoleSelectionManager : MonoBehaviour
 
         ClearRoleList();
 
-        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false;
+        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false && UnreleasedToggle.isOn == false;
 
         if (showAll || TroubleBrewingToggle.isOn)
         {
@@ -80,6 +83,11 @@ public class RoleSelectionManager : MonoBehaviour
         if (showAll || SectsAndVioletsToggle.isOn)
         {
             AddRoles(TravelersToggle.isOn ? SectsAndVioletsTravelerData : SectsAndVioletsData);
+        }
+
+        if (showAll || UnreleasedToggle.isOn)
+        {
+            AddRoles(TravelersToggle.isOn ? UnreleasedTravelerData : UnreleasedData);
         }
 
         if (RoleEntries.Count == 0)
@@ -108,13 +116,13 @@ public class RoleSelectionManager : MonoBehaviour
         }
     }
 
-    public void BuildTravelerList()
+    void BuildTravelerList()
     {
         CurrentState = RoleSeletionState.SelectingTravelers;
 
         ClearRoleList();
 
-        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false;
+        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false && UnreleasedToggle.isOn == false;
 
         if (showAll || TroubleBrewingToggle.isOn)
         {
@@ -129,6 +137,11 @@ public class RoleSelectionManager : MonoBehaviour
         if (showAll || SectsAndVioletsToggle.isOn)
         {
             AddRoles(SectsAndVioletsTravelerData);
+        }
+
+        if (showAll || UnreleasedToggle.isOn)
+        {
+            AddRoles(UnreleasedTravelerData);
         }
 
         if (RoleEntries.Count == 0)
@@ -149,7 +162,7 @@ public class RoleSelectionManager : MonoBehaviour
 
         ClearRoleList();
 
-        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false;
+        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false && UnreleasedToggle.isOn == false;
 
         if (showAll || TroubleBrewingToggle.isOn)
         {
@@ -164,6 +177,11 @@ public class RoleSelectionManager : MonoBehaviour
         if (showAll || SectsAndVioletsToggle.isOn)
         {
             AddBluffRoles(SectsAndVioletsData);
+        }
+
+        if (showAll || UnreleasedToggle.isOn)
+        {
+            AddBluffRoles(UnreleasedData);
         }
 
         foreach (var roleEntry in RoleEntries)
@@ -334,6 +352,30 @@ public class RoleSelectionManager : MonoBehaviour
                 default:
                     break;
             }
+        }
+    }
+
+    public void UpdateEditionFilter()
+    {
+        switch (CurrentState)
+        {
+            case RoleSeletionState.SelectingRoles:
+                {
+                    BuildRoleList();
+                }
+                break;
+            case RoleSeletionState.SelectingBluffs:
+                {
+                    BuildBluffList();
+                }
+                break;
+            case RoleSeletionState.SelectingTravelers:
+                {
+                    BuildTravelerList();
+                }
+                break;
+            default:
+                break;
         }
     }
 }

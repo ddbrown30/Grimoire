@@ -18,6 +18,7 @@ public class RoleData : ScriptableObject
     public RoleType RoleType;
     public int FirstNightOrder = -1;
     public int OtherNightOrder = -1;
+    public bool IsNightOrderAfterDawn = false;
 
     public Sprite RoleTokenSprite;
     public Sprite[] HelperTokenSprites;

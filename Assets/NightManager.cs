@@ -53,8 +53,9 @@ public class NightManager : MonoBehaviour
         ClearList();
 
         List<EntryInfo> entryInfos = new List<EntryInfo>();
+        List<EntryInfo> afterDawnEntryInfos = new List<EntryInfo>();
 
-        if(GrimoireManager.Instance.TownSize >= 7)
+        if (GrimoireManager.Instance.TownSize >= 7)
         {
             entryInfos.Add(new EntryInfo("Minion Info", Color.white, MinionInfoOrder, null));
             entryInfos.Add(new EntryInfo("Demon Info", Color.white, DemonInfoOrder, null));
@@ -66,7 +67,14 @@ public class NightManager : MonoBehaviour
             if (role.FirstNightOrder < 0)
                 continue;
 
-            entryInfos.Add(new EntryInfo(role.RoleName, RoleData.RoleColors[(int)role.RoleType], role.FirstNightOrder, role));
+            if (role.IsNightOrderAfterDawn)
+            {
+                afterDawnEntryInfos.Add(new EntryInfo(role.RoleName, RoleData.RoleColors[(int)role.RoleType], role.FirstNightOrder, role));
+            }
+            else
+            {
+                entryInfos.Add(new EntryInfo(role.RoleName, RoleData.RoleColors[(int)role.RoleType], role.FirstNightOrder, role));
+            }
         }
 
         entryInfos = entryInfos.OrderBy(x => x.NightOrder).ToList();
@@ -76,6 +84,12 @@ public class NightManager : MonoBehaviour
         }
 
         AddEntry("Dawn", Color.white, null);
+
+        afterDawnEntryInfos = afterDawnEntryInfos.OrderBy(x => x.NightOrder).ToList();
+        foreach (var afterDawnEntryInfo in afterDawnEntryInfos)
+        {
+            AddEntry(afterDawnEntryInfo.Text, afterDawnEntryInfo.Color, afterDawnEntryInfo.RoleData);
+        }
     }
 
     public void BuildOtherNightsList()

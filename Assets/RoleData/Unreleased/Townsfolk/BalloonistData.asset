@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
+  m_Name: BalloonistData
+  m_EditorClassIdentifier: 
+  RoleName: Balloonist
+  RoleType: 0
+  FirstNightOrder: 27
+  OtherNightOrder: 45
+  IsNightOrderAfterDawn: 0
+  RoleTokenSprite: {fileID: 21300000, guid: 95067aa0c44e4664aaddf28f7aaffa5f, type: 3}
+  HelperTokenSprites:
+  - {fileID: 21300000, guid: dbef87dabe6b600408068e3bedf0fe24, type: 3}
+  - {fileID: 21300000, guid: f644a2c3a823a184e91222f9b982b419, type: 3}
+  - {fileID: 21300000, guid: 0ace86839ddd2794388f3d20c4efc5c7, type: 3}
+  - {fileID: 21300000, guid: 48a14690f8ea5644e8914be529e242d4, type: 3}
+  AddToGrimoire: 1
