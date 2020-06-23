@@ -30,7 +30,8 @@ public class GrimoireManager : MonoBehaviour
 
     public float MinTokenScale = 0.5f;
     public float MaxTokenScale = 2f;
-    public Slider ScaleSlider;
+    public Slider RoleScaleSlider;
+    public Slider HelperScaleSlider;
 
     private float TownRadius;
     public float MinTokenRadius = 300f;
@@ -92,7 +93,8 @@ public class GrimoireManager : MonoBehaviour
             grimoireToken.AddHelperToken(helperToken);
         }
 
-        grimoireToken.SetScale(Mathf.Lerp(MinTokenScale, MaxTokenScale, ScaleSlider.value));
+        grimoireToken.SetRoleTokenScale(Mathf.Lerp(MinTokenScale, MaxTokenScale, RoleScaleSlider.value));
+        grimoireToken.SetHelperTokenScale(Mathf.Lerp(MinTokenScale, MaxTokenScale, HelperScaleSlider.value));
 
         UpdateGrimoire();
         UpdateRoleCounts();
@@ -304,13 +306,23 @@ public class GrimoireManager : MonoBehaviour
         ModalPanel.MessageBox("Randomize player positions?", RandomizeGrimoire, null, null, null, "YesNo");
     }
 
-    public void ScaleSliderChanged(float value)
+    public void RoleScaleSliderChanged(float value)
     {
         Vector2 scale = Vector3.one * Mathf.Lerp(MinTokenScale, MaxTokenScale, value);
 
         foreach (var token in RoleTokens)
         {
-            token.SetScale(Mathf.Lerp(MinTokenScale, MaxTokenScale, ScaleSlider.value));
+            token.SetRoleTokenScale(Mathf.Lerp(MinTokenScale, MaxTokenScale, RoleScaleSlider.value));
+        }
+    }
+
+    public void HelperScaleSliderChanged(float value)
+    {
+        Vector2 scale = Vector3.one * Mathf.Lerp(MinTokenScale, MaxTokenScale, value);
+
+        foreach (var token in RoleTokens)
+        {
+            token.SetHelperTokenScale(Mathf.Lerp(MinTokenScale, MaxTokenScale, HelperScaleSlider.value));
         }
 
         foreach (var token in AlignmentTokens)
@@ -346,7 +358,7 @@ public class GrimoireManager : MonoBehaviour
         GameObject tokenObj = Instantiate(AlignmentTokenPrefab);
         tokenObj.GetComponent<RectTransform>().anchoredPosition = gameObject.GetComponent<RectTransform>().anchoredPosition;
         tokenObj.transform.SetParent(AlignmentTokenAttach.transform);
-        tokenObj.transform.localScale = Vector3.one * Mathf.Lerp(MinTokenScale, MaxTokenScale, ScaleSlider.value);
+        tokenObj.transform.localScale = Vector3.one * Mathf.Lerp(MinTokenScale, MaxTokenScale, HelperScaleSlider.value);
         tokenObj.transform.localPosition = Vector3.zero;
         AlignmentTokens.Add(tokenObj);
     }

@@ -13,7 +13,7 @@ public class NightEntry : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void SetRoleData(RoleData roleData)
     {
         RoleData = roleData;
-        if (RoleData && RoleData.RoleName == "Spy")
+        if (RoleData && (RoleData.RoleName == "Spy" || RoleData.RoleName == "Widow"))
             TakeScreenshotButton.SetActive(true);
     }
 

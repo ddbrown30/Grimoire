@@ -113,9 +113,13 @@ public class GrimoireToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IDr
         GetComponentInChildren<Button>().enabled = false;
     }
 
-    public void SetScale(float scale)
+    public void SetRoleTokenScale(float scale)
     {
         transform.localScale = Vector3.one * scale;
+    }
+
+    public void SetHelperTokenScale(float scale)
+    {
         foreach (var token in HelperTokens)
         {
             token.transform.localScale = Vector3.one * scale;

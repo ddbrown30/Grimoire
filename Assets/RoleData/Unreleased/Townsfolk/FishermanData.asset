@@ -15,7 +15,7 @@ MonoBehaviour:
   RoleName: Fisherman
   RoleType: 0
   FirstNightOrder: -1
-  OtherNightOrder: 29
+  OtherNightOrder: -1
   IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: e9074df03c8171e4f980c5638c82b509, type: 3}
   HelperTokenSprites:
