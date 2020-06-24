@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3617616154750251553}
   - component: {fileID: 1591712824890197496}
   m_Layer: 5
-  m_Name: AlignmentToken
+  m_Name: AlignmentTokenPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8453886711903643281}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 

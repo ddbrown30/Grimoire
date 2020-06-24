@@ -287,7 +287,6 @@ public class RoleSelectionManager : MonoBehaviour
                     {
                         InUseRoles.Add(roleData);
                         GrimoireManager.Instance.AddToken(roleData);
-                        GrimoireManager.Instance.AddAlignmentToken();
                     }
                     break;
                 default:
@@ -314,7 +313,6 @@ public class RoleSelectionManager : MonoBehaviour
                     {
                         InUseRoles.Remove(roleData);
                         GrimoireManager.Instance.RemoveToken(roleData);
-                        GrimoireManager.Instance.RemoveAlignmentToken();
                     }
                     break;
                 default:

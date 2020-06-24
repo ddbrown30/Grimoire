@@ -5,8 +5,9 @@ using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class GrimoireManager : MonoBehaviour
+public class GrimoireManager : MonoBehaviour, IPointerClickHandler
 {
     public UnityEvent OnResetGrimoire;
 
@@ -14,22 +15,19 @@ public class GrimoireManager : MonoBehaviour
     List<GrimoireToken> RoleTokens = new List<GrimoireToken>();
     List<GrimoireToken> HiddenTokens = new List<GrimoireToken>();
     List<GrimoireToken> BluffTokens = new List<GrimoireToken>();
-    List<GameObject> AlignmentTokens = new List<GameObject>();
 
     public GameObject RoleTokenPrefab;
-    public GameObject HelperTokenPrefab;
-    public GameObject AlignmentTokenPrefab;
+    public ContextMenu ContextMenuPrefab;
 
-    public GameObject BluffTokenAttach;
+    public GameObject RoleTokenAttach;
     public GameObject HelperTokenAttach;
+    public GameObject BluffTokenAttach;
     public GameObject AlignmentTokenAttach;
 
     public Image HoverImage;
 
-    private ModalPanel ModalPanel;
+    private ModalManager ModalManager;
 
-    public float MinTokenScale = 0.5f;
-    public float MaxTokenScale = 2f;
     public Slider RoleScaleSlider;
     public Slider HelperScaleSlider;
 
@@ -40,9 +38,11 @@ public class GrimoireManager : MonoBehaviour
 
     public TMP_Text RoleCountText;
 
-    public Toggle ShowPlayerNamesToggle;
+    bool PlayerNamesVisible;
 
     public int TownSize { get { return RoleTokens.Count; } }
+
+    ContextMenu GrimoireContextMenu;
 
 
     public GrimoireManager()
@@ -52,7 +52,7 @@ public class GrimoireManager : MonoBehaviour
 
     void Awake()
     {
-        ModalPanel = ModalPanel.Instance();
+        ModalManager = ModalManager.Instance();
     }
 
     void Start()
@@ -60,10 +60,10 @@ public class GrimoireManager : MonoBehaviour
         TownRadius = Mathf.Lerp(MinTokenRadius, MaxTokenRadius, RadiusSlider.value);
     }
 
-    public void AddToken(RoleData roleData)
+    public GrimoireToken AddToken(RoleData roleData)
     {
         GameObject tokenObj = Instantiate(RoleTokenPrefab);
-        tokenObj.transform.SetParent(transform);
+        tokenObj.transform.SetParent(RoleTokenAttach.transform);
         tokenObj.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
         GrimoireToken grimoireToken = tokenObj.GetComponentInChildren<GrimoireToken>();
@@ -79,25 +79,11 @@ public class GrimoireManager : MonoBehaviour
             grimoireToken.gameObject.SetActive(false);
             HiddenTokens.Add(grimoireToken);
         }
-        
-        foreach (var helperTokenSprite in roleData.HelperTokenSprites)
-        {
-            GameObject helperTokenObj = Instantiate(HelperTokenPrefab);
-            helperTokenObj.transform.SetParent(HelperTokenAttach.transform);
-            helperTokenObj.transform.localScale = Vector3.one;
-
-            HelperToken helperToken = helperTokenObj.GetComponentInChildren<HelperToken>();
-            helperToken.FreeTransform = transform;
-            helperToken.SetSprite(helperTokenSprite);
-
-            grimoireToken.AddHelperToken(helperToken);
-        }
-
-        grimoireToken.SetRoleTokenScale(Mathf.Lerp(MinTokenScale, MaxTokenScale, RoleScaleSlider.value));
-        grimoireToken.SetHelperTokenScale(Mathf.Lerp(MinTokenScale, MaxTokenScale, HelperScaleSlider.value));
 
         UpdateGrimoire();
         UpdateRoleCounts();
+
+        return grimoireToken;
     }
 
     public void RemoveToken(RoleData roleData)
@@ -109,14 +95,14 @@ public class GrimoireManager : MonoBehaviour
             if (tokenIndex < 0)
                 return;
 
-            HiddenTokens[tokenIndex].DestroyHelperTokens();
+            HiddenTokens[tokenIndex].DestroyOwnedTokens();
 
             Object.Destroy(HiddenTokens[tokenIndex].gameObject);
             HiddenTokens.RemoveAt(tokenIndex);
             return;
         }
 
-        RoleTokens[tokenIndex].DestroyHelperTokens();
+        RoleTokens[tokenIndex].DestroyOwnedTokens();
 
         Object.Destroy(RoleTokens[tokenIndex].gameObject);
         RoleTokens.RemoveAt(tokenIndex);
@@ -161,13 +147,13 @@ public class GrimoireManager : MonoBehaviour
     {
         foreach (var token in RoleTokens)
         {
-            token.DestroyHelperTokens();
+            token.DestroyOwnedTokens();
             Object.Destroy(token.gameObject);
         }
 
         foreach (var token in HiddenTokens)
         {
-            token.DestroyHelperTokens();
+            token.DestroyOwnedTokens();
             Object.Destroy(token.gameObject);
         }
 
@@ -176,15 +162,9 @@ public class GrimoireManager : MonoBehaviour
             Object.Destroy(token.gameObject);
         }
 
-        foreach (var token in AlignmentTokens)
-        {
-            Object.Destroy(token);
-        }        
-
         RoleTokens.Clear();
         HiddenTokens.Clear();
         BluffTokens.Clear();
-        AlignmentTokens.Clear();
         UpdateGrimoire();
         UpdateRoleCounts();
         OnResetGrimoire.Invoke();
@@ -201,7 +181,7 @@ public class GrimoireManager : MonoBehaviour
 
     public void UpdateGrimoire()
     {
-        Vector2 pos2d = gameObject.GetComponent<RectTransform>().anchoredPosition;
+        Vector2 pos2d = RoleTokenAttach.GetComponent<RectTransform>().anchoredPosition;
         int townSize = RoleTokens.Count;
         float angleDivision =(2.0f * Mathf.PI) / townSize;
         for (int i = 0; i < townSize; ++i)
@@ -211,7 +191,7 @@ public class GrimoireManager : MonoBehaviour
             token.SetTargetPos(pos2d + (dir * TownRadius));
         }
 
-        SetPlayerNamesVisible(ShowPlayerNamesToggle.isOn);
+        SetPlayerNamesVisible(PlayerNamesVisible);
     }
 
     public void UpdateRoleCounts()
@@ -290,44 +270,40 @@ public class GrimoireManager : MonoBehaviour
         foreach (var token in RoleTokens)
         {
             if(token.IsAlive)
-                retVal.Add(token.RoleData);
+                retVal.Add(token.SwappedRoleData ? token.SwappedRoleData : token.RoleData);
         }
 
         return retVal;
     }
 
-    public void OnClickReset()
+    public void OnClickResetGrimoire()
     {
-        ModalPanel.MessageBox("Reset the Town Square?", ResetGrimoire, null, null, null, "YesNo");
+        ModalManager.MessageBox("Reset the Grimoire?", ResetGrimoire, null, null, null, "YesNo");
+    }
+
+    public void OnClickResetHelperTokens()
+    {
+        ModalManager.MessageBox("Reset the position of all helper tokens?", ResetHelperTokens, null, null, null, "YesNo");
     }
 
     public void OnClickRandomize()
     {
-        ModalPanel.MessageBox("Randomize player positions?", RandomizeGrimoire, null, null, null, "YesNo");
+        ModalManager.MessageBox("Randomize player positions?", RandomizeGrimoire, null, null, null, "YesNo");
     }
 
     public void RoleScaleSliderChanged(float value)
     {
-        Vector2 scale = Vector3.one * Mathf.Lerp(MinTokenScale, MaxTokenScale, value);
-
         foreach (var token in RoleTokens)
         {
-            token.SetRoleTokenScale(Mathf.Lerp(MinTokenScale, MaxTokenScale, RoleScaleSlider.value));
+            token.SetRoleTokenScale(RoleScaleSlider.value);
         }
     }
 
     public void HelperScaleSliderChanged(float value)
     {
-        Vector2 scale = Vector3.one * Mathf.Lerp(MinTokenScale, MaxTokenScale, value);
-
         foreach (var token in RoleTokens)
         {
-            token.SetHelperTokenScale(Mathf.Lerp(MinTokenScale, MaxTokenScale, HelperScaleSlider.value));
-        }
-
-        foreach (var token in AlignmentTokens)
-        {
-            token.gameObject.transform.localScale = scale;
+            token.SetHelperTokenScale(HelperScaleSlider.value);
         }
     }
 
@@ -344,8 +320,9 @@ public class GrimoireManager : MonoBehaviour
         HoverImage.sprite = sprite;
     }
 
-    public void SetPlayerNamesVisible(bool visible)
+    void SetPlayerNamesVisible(bool visible)
     {
+        PlayerNamesVisible = visible;
         foreach (var token in RoleTokens)
         {
             InputField inputField = token.GetComponentInChildren<InputField>(true);
@@ -353,23 +330,9 @@ public class GrimoireManager : MonoBehaviour
         }
     }
 
-    public void AddAlignmentToken()
+    void TogglePlayerNamesVisible()
     {
-        GameObject tokenObj = Instantiate(AlignmentTokenPrefab);
-        tokenObj.GetComponent<RectTransform>().anchoredPosition = gameObject.GetComponent<RectTransform>().anchoredPosition;
-        tokenObj.transform.SetParent(AlignmentTokenAttach.transform);
-        tokenObj.transform.localScale = Vector3.one * Mathf.Lerp(MinTokenScale, MaxTokenScale, HelperScaleSlider.value);
-        tokenObj.transform.localPosition = Vector3.zero;
-        AlignmentTokens.Add(tokenObj);
-    }
-
-    public void RemoveAlignmentToken()
-    {
-        if (AlignmentTokens.Count == 0)
-            return;
-
-        Object.Destroy(AlignmentTokens[0]);
-        AlignmentTokens.RemoveAt(0);
+        SetPlayerNamesVisible(!PlayerNamesVisible);
     }
 
     public void ResetHelperTokens()
@@ -382,6 +345,27 @@ public class GrimoireManager : MonoBehaviour
         foreach (var token in HiddenTokens)
         {
             token.ResetHelperTokens(HelperTokenAttach.transform);
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            GrimoireContextMenu = Instantiate<GameObject>(ContextMenuPrefab.gameObject, GetComponentInParent<Canvas>().transform).GetComponent<ContextMenu>();
+            GrimoireContextMenu.transform.localScale = Vector3.one;
+            GrimoireContextMenu.transform.localPosition = Vector3.zero;
+
+            GrimoireContextMenu.AddMenuItem("Reset Grimoire", OnClickResetGrimoire);
+            GrimoireContextMenu.AddMenuItem("Reset Helper Tokens", OnClickResetHelperTokens);
+            GrimoireContextMenu.AddMenuItem("Randomize player positions", OnClickRandomize);
+
+            string namesToggleText = PlayerNamesVisible ? "Hide player names" : "Show player names";
+            GrimoireContextMenu.AddMenuItem(namesToggleText, TogglePlayerNamesVisible);
+            GrimoireContextMenu.FinaliseMenu();
+
+            ContextMenu.HideAllMenus();//hide other menus
+            GrimoireContextMenu.ShowAtMousePosition();//show the menu
         }
     }
 }

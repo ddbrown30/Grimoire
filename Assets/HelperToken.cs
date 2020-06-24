@@ -6,14 +6,15 @@ using UnityEngine.UI;
 
 public class HelperToken : MonoBehaviour, IDragHandler
 {
-    public Transform FreeTransform;
     public Image HelperTokenImage;
 
     public void OnDrag(PointerEventData eventData)
     {
-        gameObject.transform.SetParent(FreeTransform);
+        gameObject.transform.SetParent(GrimoireManager.Instance.transform);
         gameObject.transform.transform.position = Input.mousePosition;
         GetComponent<RectTransform>().SetAsLastSibling();
+
+        HelperTokenImage.alphaHitTestMinimumThreshold = 0.5f;
     }
 
     public void SetSprite(Sprite sprite)

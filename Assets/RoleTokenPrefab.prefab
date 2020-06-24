@@ -375,7 +375,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2676926888976038162}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -432,6 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2755466916616677888}
   - component: {fileID: 2645131745233677232}
+  - component: {fileID: 8679380518160727178}
   m_Layer: 5
   m_Name: RoleTokenPrefab
   m_TagString: Untagged
@@ -472,7 +473,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAlive: 1
+  HelperTokenPrefab: {fileID: 2855294134475550792, guid: 618ac4a8395caf0468ed8dc88fdc38dd,
+    type: 3}
+  AlignmentTokenPrefab: {fileID: 3974944194260657969, guid: 75711900eac58c44fa377f156687fab9,
+    type: 3}
+  ContextMenuPrefab: {fileID: 11433316, guid: e3ac8d34da2d71c48bce3808dbb04409, type: 3}
   DeadMarker: {fileID: 2645535934197505314}
   NameText: {fileID: 2645769719696404146}
   RoleTokenImage: {fileID: 2646012619952974596}
-  HelperTokens: []
+  MinTokenScale: 0.5
+  MaxTokenScale: 2
+--- !u!222 &8679380518160727178
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677098626516043974}
+  m_CullTransparentMesh: 0

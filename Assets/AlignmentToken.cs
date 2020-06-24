@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class AlignmentToken : MonoBehaviour, IDragHandler, IDropHandler
+public class AlignmentToken : MonoBehaviour, IDragHandler
 {
     public Sprite GoodSprite;
     public Sprite EvilSprite;
@@ -16,30 +16,34 @@ public class AlignmentToken : MonoBehaviour, IDragHandler, IDropHandler
 
     void Awake()
     {
+        ImageComponent = GetComponentInChildren<Image>();
         RectTrans = gameObject.GetComponent<RectTransform>();
     }
 
     void Start()
     {
-        ImageComponent = GetComponentInChildren<Image>();
+        ImageComponent.alphaHitTestMinimumThreshold = 0.5f;
+    }
+
+    public void SetAlignment(bool isGood)
+    {
+        IsGood = isGood;
+        ImageComponent.sprite = IsGood ? GoodSprite : EvilSprite;
     }
 
     public void ToggleAlignment()
     {
-        IsGood = !IsGood;
-        ImageComponent.sprite = IsGood ? GoodSprite : EvilSprite;
+        SetAlignment(!IsGood);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        gameObject.transform.SetParent(GrimoireManager.Instance.transform);
+
         Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponentInParent<Canvas>().GetComponent<RectTransform>(), Input.mousePosition, null, out localPoint);
 
         transform.SetParent(GetComponentInParent<Canvas>().transform);
         RectTrans.anchoredPosition = localPoint;
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
     }
 }
