@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -14,7 +15,7 @@ public class GrimoireToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IDr
     public ContextMenu ContextMenuPrefab;
 
     public Image DeadMarker;
-    public InputField NameText;
+    public TMP_InputField NameText;
 
     public Image RoleTokenImage;
 
@@ -98,11 +99,6 @@ public class GrimoireToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IDr
         }
     }
 
-    public void SetPlayerName(string name)
-    {
-        NameText.text = name;
-    }
-
     public void SetRoleData(RoleData roleData)
     {
         RoleData = roleData;
@@ -132,7 +128,15 @@ public class GrimoireToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IDr
     {
         if(AlignmentToken)
         {
-            AlignmentToken.ToggleAlignment();
+            if(RoleData.RoleType == RoleType.Traveler)
+            {
+                AlignmentToken.ToggleAlignment();
+            }
+            else
+            {
+                //If we already have an alignment token and we're swapping back, that means we're back to our default alignment, so just remove the token
+                DestroyAlignmentToken();
+            }
         }
         else
         {

@@ -7,6 +7,7 @@ public class ModalManager : MonoBehaviour
     public GameObject ModalPanelObject;       //Reference to the Panel Object
     public DialogPanel ModalDialogPanel;       //Reference to the DialogPanel
     public SwapRolePanel ModalSwapRolePanel;
+    public HelpPanel ModalHelpPanel;
     private static ModalManager MainModalManager; //Reference to the Modal Panel, to make sure it's been included
 
     public static ModalManager Instance()
@@ -36,10 +37,18 @@ public class ModalManager : MonoBehaviour
         ModalSwapRolePanel.OpenSwapPanel(token, ClosePanel);
     }
 
+    public void OpenHelpPanel()
+    {
+        ModalPanelObject.SetActive(true);
+        ModalHelpPanel.gameObject.SetActive(true);
+        ModalHelpPanel.OpenHelpPanel(ClosePanel);
+    }
+
     void ClosePanel()
     {
         ModalPanelObject.SetActive(false);
         ModalDialogPanel.gameObject.SetActive(false);
         ModalSwapRolePanel.gameObject.SetActive(false);
+        ModalHelpPanel.gameObject.SetActive(false);
     }
 }

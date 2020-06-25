@@ -26,6 +26,11 @@ public class SwapRolePanel : MonoBehaviour
 
     UnityEvent OnSelectedListener;
 
+    void Awake()
+    {
+        OnSelectedListener = new UnityEvent();
+    }
+
     public void OpenSwapPanel(GrimoireToken token, UnityAction CloseEvent)
     {
         CustomScriptToggle.gameObject.SetActive(RoleSelectionManager.CustomScriptData.Count > 0);
@@ -37,7 +42,6 @@ public class SwapRolePanel : MonoBehaviour
         CustomScriptToggle.SetIsOnWithoutNotify(RoleSelectionManager.CustomScriptToggle.isOn);
 
         TargetToken = token;
-        OnSelectedListener = new UnityEvent();
         OnSelectedListener.AddListener(CloseEvent);
         BuildRoleList();
     }

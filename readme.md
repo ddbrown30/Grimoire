@@ -5,7 +5,7 @@ This program should hopefully cover everything you might need to do when playing
 ![Grimoire](/Preview.png?raw=true)
 
 #### Select Roles:
-During this step, you select the roles that your players will be playing during the game. You can filter by edition in the top left. Selecting a role will add it to the Grimoire on the right. If that role comes with any helper tokens, those will also be added. Selecting the role again will remove them. As you select roles, the role count display will update telling you how many of each role type (Townsfolk, Minions, etc.) you ahve selected. This is here simply so that you do not need to manually count your roles each time. Once you've selected your roles, press the Next button to continue.
+During this step, you select the roles that your players will be playing during the game. You can filter by edition in the top left. Selecting a role will add it to the Grimoire on the right. If that role comes with any helper tokens, those will also be added. Selecting the role again will remove them. As you select roles, the role count display will update telling you how many of each role type (Townsfolk, Minions, etc.) you have selected. This is here simply so that you do not need to manually count your roles each time. Once you've selected your roles, press the Next button to continue.
 
 #### Select Bluffs:
 During the step, you will be selecting the bluff roles that will be shown to the Demon. Selected roles will be added to the far right. If you do not need any bluff roles (when playing with fewer than 7 players, for instance), you can just skip this step. Select Next when you are ready to continue.

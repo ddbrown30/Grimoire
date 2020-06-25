@@ -38,7 +38,7 @@ public class GrimoireManager : MonoBehaviour, IPointerClickHandler
 
     public TMP_Text RoleCountText;
 
-    bool PlayerNamesVisible;
+    bool PlayerNamesVisible = true;
 
     public int TownSize { get { return RoleTokens.Count; } }
 
@@ -118,7 +118,6 @@ public class GrimoireManager : MonoBehaviour, IPointerClickHandler
 
         GrimoireToken grimoireToken = tokenObj.GetComponentInChildren<GrimoireToken>();
         grimoireToken.name = "BluffToken:" + roleData.RoleName;
-        grimoireToken.NameText.gameObject.SetActive(false);
         grimoireToken.SetUseTargetPos(false);
         grimoireToken.SetRoleData(roleData);
         grimoireToken.SetTargetPos(grimoireToken.transform.position);
@@ -325,8 +324,7 @@ public class GrimoireManager : MonoBehaviour, IPointerClickHandler
         PlayerNamesVisible = visible;
         foreach (var token in RoleTokens)
         {
-            InputField inputField = token.GetComponentInChildren<InputField>(true);
-            inputField.gameObject.SetActive(visible);
+            token.NameText.gameObject.SetActive(visible);
         }
     }
 
