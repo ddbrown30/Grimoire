@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: ThiefData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: 754c19d8d3af57547b6da2cbd200d860, type: 3}
   RoleName: Thief
+  ScriptToolId: 
   RoleType: 4
+  GameEdition: 1
   FirstNightOrder: 0
   OtherNightOrder: 0
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 1d4dc1026f5d3014593e34a5c47b5917, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: dcc5b7c6475f56142ba83fc79341b205, type: 3}
+  AddToGrimoire: 1

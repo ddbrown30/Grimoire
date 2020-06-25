@@ -19,18 +19,22 @@ public class RoleSelectionManager : MonoBehaviour
     public Toggle BadMoonRisingToggle;
     public Toggle SectsAndVioletsToggle;
     public Toggle UnreleasedToggle;
+    public Toggle CustomScriptToggle;
 
     public Toggle TravelersToggle;
 
-    public RoleData[] TroubleBrewingData;
-    public RoleData[] BadMoonRisingData;
-    public RoleData[] SectsAndVioletsData;
-    public RoleData[] UnreleasedData;
+    public RoleData[] RoleDataList;
+    public List<RoleData> TroubleBrewingData;
+    public List<RoleData> BadMoonRisingData;
+    public List<RoleData> SectsAndVioletsData;
+    public List<RoleData> UnreleasedData;
+    public List<RoleData> CustomScriptData;
 
-    public RoleData[] TroubleBrewingTravelerData;
-    public RoleData[] BadMoonRisingTravelerData;
-    public RoleData[] SectsAndVioletsTravelerData;
-    public RoleData[] UnreleasedTravelerData;
+    public RoleData[] TravelerDataList;
+    public List<RoleData> TroubleBrewingTravelerData;
+    public List<RoleData> BadMoonRisingTravelerData;
+    public List<RoleData> SectsAndVioletsTravelerData;
+    public List<RoleData> UnreleasedTravelerData;
 
     public GameObject RoleEntry;
     public GameObject RoleEntryDivider;
@@ -45,6 +49,44 @@ public class RoleSelectionManager : MonoBehaviour
 
     void Start()
     {
+        foreach (var roleData in RoleDataList)
+        {
+            switch (roleData.GameEdition)
+            {
+                case GameEdition.TroubleBrewing:
+                    TroubleBrewingData.Add(roleData);
+                    break;
+                case GameEdition.BadMoonRising:
+                    BadMoonRisingData.Add(roleData);
+                    break;
+                case GameEdition.SectsAndViolets:
+                    SectsAndVioletsData.Add(roleData);
+                    break;
+                case GameEdition.Unreleased:
+                    UnreleasedData.Add(roleData);
+                    break;
+            }
+        }
+
+        foreach (var roleData in TravelerDataList)
+        {
+            switch (roleData.GameEdition)
+            {
+                case GameEdition.TroubleBrewing:
+                    TroubleBrewingTravelerData.Add(roleData);
+                    break;
+                case GameEdition.BadMoonRising:
+                    BadMoonRisingTravelerData.Add(roleData);
+                    break;
+                case GameEdition.SectsAndViolets:
+                    SectsAndVioletsTravelerData.Add(roleData);
+                    break;
+                case GameEdition.Unreleased:
+                    UnreleasedTravelerData.Add(roleData);
+                    break;
+            }
+        }
+
         BuildRoleList();
     }
 
@@ -68,7 +110,7 @@ public class RoleSelectionManager : MonoBehaviour
 
         ClearRoleList();
 
-        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false && UnreleasedToggle.isOn == false;
+        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false && UnreleasedToggle.isOn == false && CustomScriptToggle.isOn == false;
 
         if (showAll || TroubleBrewingToggle.isOn)
         {
@@ -88,6 +130,11 @@ public class RoleSelectionManager : MonoBehaviour
         if (showAll || UnreleasedToggle.isOn)
         {
             AddRoles(TravelersToggle.isOn ? UnreleasedTravelerData : UnreleasedData);
+        }
+
+        if (TravelersToggle.isOn == false && (showAll || CustomScriptToggle.isOn))
+        {
+            AddRoles(CustomScriptData);
         }
 
         if (RoleEntries.Count == 0)
@@ -122,8 +169,8 @@ public class RoleSelectionManager : MonoBehaviour
 
         ClearRoleList();
 
-        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false && UnreleasedToggle.isOn == false;
-
+        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false && UnreleasedToggle.isOn == false && CustomScriptToggle.isOn == false;
+        
         if (showAll || TroubleBrewingToggle.isOn)
         {
             AddRoles(TroubleBrewingTravelerData);
@@ -162,7 +209,7 @@ public class RoleSelectionManager : MonoBehaviour
 
         ClearRoleList();
 
-        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false && UnreleasedToggle.isOn == false;
+        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false && UnreleasedToggle.isOn == false && CustomScriptToggle.isOn == false;
 
         if (showAll || TroubleBrewingToggle.isOn)
         {
@@ -184,6 +231,24 @@ public class RoleSelectionManager : MonoBehaviour
             AddBluffRoles(UnreleasedData);
         }
 
+        if (showAll || CustomScriptToggle.isOn)
+        {
+            AddBluffRoles(CustomScriptData);
+        }
+
+        if (RoleEntries.Count == 0)
+            return;
+        
+        RoleEntries = RoleEntries.OrderBy(roleEntry => roleEntry.RoleData.RoleType).ThenBy(roleEntry => roleEntry.RoleData.RoleName).ToList();
+
+        int indexOfTownsfolk = RoleEntries.FindIndex(roleEntry => roleEntry.RoleData != null ? roleEntry.RoleData.RoleType == RoleType.Townsfolk : false);
+        if (indexOfTownsfolk >= 0)
+            AddDivider("Townsfolk", indexOfTownsfolk);
+
+        int indexOfOutsider = RoleEntries.FindIndex(roleEntry => roleEntry.RoleData != null ? roleEntry.RoleData.RoleType == RoleType.Outsider : false);
+        if (indexOfOutsider >= 0)
+            AddDivider("Outsider", indexOfOutsider);
+
         foreach (var roleEntry in RoleEntries)
         {
             roleEntry.transform.SetParent(ScrollListContentPanel.transform);
@@ -191,10 +256,13 @@ public class RoleSelectionManager : MonoBehaviour
         }
     }
 
-    void AddRoles(RoleData[] roleData)
+    void AddRoles(List<RoleData> roleData)
     {
         foreach (var role in roleData)
         {
+            if (RoleEntries.Exists(x => x.RoleData == role))
+                continue;
+
             GameObject roleEntryObject = Instantiate(RoleEntry);
             roleEntryObject.name = "Entry:" + role.RoleName;
 
@@ -216,11 +284,14 @@ public class RoleSelectionManager : MonoBehaviour
         }
     }
 
-    void AddBluffRoles(RoleData[] roleData)
+    void AddBluffRoles(List<RoleData> roleData)
     {
         foreach (var role in roleData)
         {
             if (InUseRoles.Contains(role))
+                continue;
+
+            if (RoleEntries.Exists(x => x.RoleData == role))
                 continue;
 
             if (role.RoleType != RoleType.Townsfolk && role.RoleType != RoleType.Outsider)
@@ -351,6 +422,20 @@ public class RoleSelectionManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void OnCustomScriptLoaded()
+    {
+        TroubleBrewingToggle.SetIsOnWithoutNotify(false);
+        BadMoonRisingToggle.SetIsOnWithoutNotify(false);
+        SectsAndVioletsToggle.SetIsOnWithoutNotify(false);
+        UnreleasedToggle.SetIsOnWithoutNotify(false);
+
+        bool enableCustomScriptFilter = CustomScriptData.Count > 0;
+        CustomScriptToggle.gameObject.SetActive(enableCustomScriptFilter);
+        CustomScriptToggle.SetIsOnWithoutNotify(enableCustomScriptFilter);
+
+        UpdateEditionFilter();
     }
 
     public void UpdateEditionFilter()

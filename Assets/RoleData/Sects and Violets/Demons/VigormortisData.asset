@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: VigormortisData
   m_EditorClassIdentifier: 
   RoleName: Vigormortis
+  ScriptToolId: vigormortis
   RoleType: 3
+  GameEdition: 4
   FirstNightOrder: -1
   OtherNightOrder: 32
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 29d70aac257a96e4b91f545327499515, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: 5c097831a40048f4686ce16cefd4757f, type: 3}

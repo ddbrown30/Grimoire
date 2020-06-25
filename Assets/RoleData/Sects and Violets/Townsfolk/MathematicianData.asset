@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: MathematicianData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: 524aa01c4e58335429d9d2f305aaa0a9, type: 3}
   RoleName: Mathematician
+  ScriptToolId: mathematician
   RoleType: 0
+  GameEdition: 4
   FirstNightOrder: 36
   OtherNightOrder: 57
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 841f4586bcd521445b30fdeb33f9ed8e, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: 6206af682c20e8b44a556beebf13c00b, type: 3}
@@ -24,3 +26,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6206af682c20e8b44a556beebf13c00b, type: 3}
   - {fileID: 21300000, guid: 6206af682c20e8b44a556beebf13c00b, type: 3}
   - {fileID: 21300000, guid: 6206af682c20e8b44a556beebf13c00b, type: 3}
+  AddToGrimoire: 1

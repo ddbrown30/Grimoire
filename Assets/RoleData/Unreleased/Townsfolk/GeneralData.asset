@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: GeneralData
   m_EditorClassIdentifier: 
   RoleName: General
+  ScriptToolId: general
   RoleType: 0
+  GameEdition: 8
   FirstNightOrder: -1
   OtherNightOrder: 29
   IsNightOrderAfterDawn: 0

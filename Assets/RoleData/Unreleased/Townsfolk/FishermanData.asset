@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: FishermanData
   m_EditorClassIdentifier: 
   RoleName: Fisherman
+  ScriptToolId: fisherman
   RoleType: 0
+  GameEdition: 8
   FirstNightOrder: -1
   OtherNightOrder: -1
   IsNightOrderAfterDawn: 0

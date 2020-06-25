@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: LunaticData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: 33e8b2b0e2bd81b4db6715b2457810fa, type: 3}
   RoleName: Lunatic
+  ScriptToolId: lunatic
   RoleType: 1
+  GameEdition: 2
   FirstNightOrder: 12
   OtherNightOrder: 23
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: a3136ac3466221e4ab5d0d31cc1088e2, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: fd946e5e9d8cc0c43a99353a7fa2fd7f, type: 3}
   - {fileID: 21300000, guid: 9ef509684049bf94aa1c34e3019f988a, type: 3}
   - {fileID: 21300000, guid: bf7684221a3316e47b3b3848fda86e86, type: 3}
+  AddToGrimoire: 1

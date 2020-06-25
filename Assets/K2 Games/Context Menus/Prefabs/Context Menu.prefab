@@ -249,7 +249,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 209.7, y: 108.20001}
+  m_SizeDelta: {x: 375, y: 108.20001}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &11433316
 MonoBehaviour:
@@ -266,7 +266,7 @@ MonoBehaviour:
   transition: {fileID: 11436726}
   menuLayout: {fileID: 11404184}
   selector: {fileID: 175464}
-  menuItemPrefab: {fileID: 11408358, guid: a5e07b48e5be12341a7ec866614e99f1, type: 3}
+  menuItemPrefab: {fileID: 11408358, guid: 8ff6056155f694c44ada85827b415070, type: 3}
   parentMenu: {fileID: 0}
   menuItems: []
 --- !u!114 &11436726

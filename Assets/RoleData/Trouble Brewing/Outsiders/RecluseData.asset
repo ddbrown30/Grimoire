@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: RecluseData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1476495541831698, guid: e0f918ff12795bd4fb2357f47c6ea9e5, type: 3}
   RoleName: Recluse
+  ScriptToolId: recluse
   RoleType: 1
+  GameEdition: 1
   FirstNightOrder: -1
   OtherNightOrder: -1
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 82bcb1cce3147404d85f9d4092404f13, type: 3}
   HelperTokenSprites: []
+  AddToGrimoire: 1

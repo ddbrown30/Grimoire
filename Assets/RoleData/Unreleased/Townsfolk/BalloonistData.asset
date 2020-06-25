@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: BalloonistData
   m_EditorClassIdentifier: 
   RoleName: Balloonist
+  ScriptToolId: balloonist
   RoleType: 0
+  GameEdition: 8
   FirstNightOrder: 27
   OtherNightOrder: 45
   IsNightOrderAfterDawn: 0

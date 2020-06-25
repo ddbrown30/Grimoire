@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: TeaLadyData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: e5da14fed24a07e4a94075383ee37ee2, type: 3}
-  RoleName: TeaLady
+  RoleName: Tea Lady
+  ScriptToolId: tea_lady
   RoleType: 0
+  GameEdition: 2
   FirstNightOrder: -1
   OtherNightOrder: -1
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: a77fbfd400f86a54c82b385c8e7cbc86, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: ca9943bbe5b7a6e49855b53b3be80d90, type: 3}
   - {fileID: 21300000, guid: ca9943bbe5b7a6e49855b53b3be80d90, type: 3}
+  AddToGrimoire: 1

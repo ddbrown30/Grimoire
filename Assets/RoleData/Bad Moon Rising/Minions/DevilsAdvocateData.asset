@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: DevilsAdvocateData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: b9699b8b96020844da9b82261eb989c7, type: 3}
   RoleName: Devil's Advocate
+  ScriptToolId: devils_advocate
   RoleType: 2
+  GameEdition: 2
   FirstNightOrder: 19
   OtherNightOrder: 18
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: ecfd1900d2bcf3d4e94644981e245505, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: 5e5aed64f1078564184c9efdbad2611d, type: 3}
+  AddToGrimoire: 1

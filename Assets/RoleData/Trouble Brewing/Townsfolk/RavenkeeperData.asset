@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: RavenkeeperData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1107339252841330, guid: 0c94a7e5755ca6243a117a69854144ae, type: 3}
   RoleName: Ravenkeeper
+  ScriptToolId: ravenkeeper
   RoleType: 0
+  GameEdition: 1
   FirstNightOrder: -1
   OtherNightOrder: 44
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 254361b6eb3ff674f81a549c8d10ae27, type: 3}
   HelperTokenSprites: []
+  AddToGrimoire: 1

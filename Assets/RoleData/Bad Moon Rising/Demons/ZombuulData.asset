@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: ZombuulData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: 505c53682462fea4eab4fe14295ec5ec, type: 3}
   RoleName: Zombuul
+  ScriptToolId: zombuul
   RoleType: 3
+  GameEdition: 2
   FirstNightOrder: -1
   OtherNightOrder: 26
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: ed7ab54a46949a74f86280058b80929f, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: bfd499dcc3bd9674ea153ffd1e321695, type: 3}
   - {fileID: 21300000, guid: 956167b33f7b8694a920c55d5cf01770, type: 3}
+  AddToGrimoire: 1

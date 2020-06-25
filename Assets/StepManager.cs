@@ -18,6 +18,8 @@ public class StepManager : MonoBehaviour
     public GameObject PrevButton;
     public TMP_Text StepText;
 
+    public GameObject LoadScriptButton;
+
     public RoleSelectionManager RoleSelectionManager;
     public NightManager NightManager;
 
@@ -62,10 +64,12 @@ public class StepManager : MonoBehaviour
         {
             case GameStep.RoleSelection:
                 RoleSelectionManager.BuildRoleList();
+                LoadScriptButton.SetActive(true);
                 break;
             case GameStep.BluffSelection:
                 RoleSelectionManager.gameObject.SetActive(true);
                 NightManager.gameObject.SetActive(false);
+                LoadScriptButton.SetActive(false);
                 RoleSelectionManager.BuildBluffList();
                 break;
             case GameStep.FirstNight:

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: AmnesiacData
   m_EditorClassIdentifier: 
   RoleName: Amnesiac
+  ScriptToolId: amnesiac
   RoleType: 0
+  GameEdition: 8
   FirstNightOrder: 14
   OtherNightOrder: 20
   IsNightOrderAfterDawn: 0

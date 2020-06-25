@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: GoblinData
   m_EditorClassIdentifier: 
   RoleName: Goblin
+  ScriptToolId: goblin
   RoleType: 2
+  GameEdition: 8
   FirstNightOrder: -1
   OtherNightOrder: -1
   IsNightOrderAfterDawn: 0

@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: HarlotData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: c8fef696d90237b42bee8768bbc69c5a, type: 3}
   RoleName: Harlot
   RoleType: 4
+  GameEdition: 4
   FirstNightOrder: -1
   OtherNightOrder: 0
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: b91c6c14fbc881240b73c2116a64bb53, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: 1f7dbca3ce04ac4448bfbba168ecf894, type: 3}
   - {fileID: 21300000, guid: 1f7dbca3ce04ac4448bfbba168ecf894, type: 3}
+  AddToGrimoire: 1

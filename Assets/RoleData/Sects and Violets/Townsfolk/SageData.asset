@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: SageData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: fcac79cc21f82ef4691c26374ad759a2, type: 3}
   RoleName: Sage
+  ScriptToolId: sage
   RoleType: 0
+  GameEdition: 4
   FirstNightOrder: -1
   OtherNightOrder: 45
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 0f0c1f06b22aa8b4ba8b58447fa8208e, type: 3}
   HelperTokenSprites: []
+  AddToGrimoire: 1

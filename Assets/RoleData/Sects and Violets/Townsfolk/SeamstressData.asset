@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: SeamstressData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: f83ad3457df1d854e99429d9d47f9775, type: 3}
   RoleName: Seamstress
+  ScriptToolId: seamstress
   RoleType: 0
+  GameEdition: 4
   FirstNightOrder: 34
   OtherNightOrder: 51
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 507a4a665ad06874c99ba420a978a5d9, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: 813bde4b1c4fbfd4fad0a85bdb36f14f, type: 3}
+  AddToGrimoire: 1

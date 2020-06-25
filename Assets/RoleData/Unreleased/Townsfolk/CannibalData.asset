@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: CannibalData
   m_EditorClassIdentifier: 
   RoleName: Cannibal
+  ScriptToolId: cannibal
   RoleType: 0
+  GameEdition: 8
   FirstNightOrder: -1
   OtherNightOrder: 50
   IsNightOrderAfterDawn: 0

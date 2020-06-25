@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: BoneCollectorData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: fb5f3f235346c5a43afeb8fd3d8240fd, type: 3}
   RoleName: Bone Collector
+  ScriptToolId: 
   RoleType: 4
+  GameEdition: 4
   FirstNightOrder: -1
   OtherNightOrder: -1
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 079379a0073a8594db44e82db88e6009, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: c4d372378da9bb04c9f3e5d8d08ae24f, type: 3}
   - {fileID: 21300000, guid: e0831fe9a5596cc40a1e673e284d3d13, type: 3}
+  AddToGrimoire: 1

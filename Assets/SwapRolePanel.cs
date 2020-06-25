@@ -14,6 +14,7 @@ public class SwapRolePanel : MonoBehaviour
     public Toggle BadMoonRisingToggle;
     public Toggle SectsAndVioletsToggle;
     public Toggle UnreleasedToggle;
+    public Toggle CustomScriptToggle;
 
     public GameObject SwapEntry;
     public GameObject SwapEntryDivider;
@@ -27,6 +28,14 @@ public class SwapRolePanel : MonoBehaviour
 
     public void OpenSwapPanel(GrimoireToken token, UnityAction CloseEvent)
     {
+        CustomScriptToggle.gameObject.SetActive(RoleSelectionManager.CustomScriptData.Count > 0);
+
+        TroubleBrewingToggle.SetIsOnWithoutNotify(RoleSelectionManager.TroubleBrewingToggle.isOn);
+        BadMoonRisingToggle.SetIsOnWithoutNotify(RoleSelectionManager.BadMoonRisingToggle.isOn);
+        SectsAndVioletsToggle.SetIsOnWithoutNotify(RoleSelectionManager.SectsAndVioletsToggle.isOn);
+        UnreleasedToggle.SetIsOnWithoutNotify(RoleSelectionManager.UnreleasedToggle.isOn);
+        CustomScriptToggle.SetIsOnWithoutNotify(RoleSelectionManager.CustomScriptToggle.isOn);
+
         TargetToken = token;
         OnSelectedListener = new UnityEvent();
         OnSelectedListener.AddListener(CloseEvent);
@@ -37,7 +46,7 @@ public class SwapRolePanel : MonoBehaviour
     {
         ClearRoleList();
 
-        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false && UnreleasedToggle.isOn == false;
+        bool showAll = TroubleBrewingToggle.isOn == false && BadMoonRisingToggle.isOn == false && SectsAndVioletsToggle.isOn == false && UnreleasedToggle.isOn == false && CustomScriptToggle.isOn == false;
 
         if (showAll || TroubleBrewingToggle.isOn)
         {
@@ -57,6 +66,11 @@ public class SwapRolePanel : MonoBehaviour
         if (showAll || UnreleasedToggle.isOn)
         {
             AddRoles(RoleSelectionManager.UnreleasedData);
+        }
+
+        if (showAll || CustomScriptToggle.isOn)
+        {
+            AddRoles(RoleSelectionManager.CustomScriptData);
         }
 
         if (SwapEntries.Count == 0)
@@ -95,10 +109,13 @@ public class SwapRolePanel : MonoBehaviour
         SwapEntries.Clear();
     }
 
-    void AddRoles(RoleData[] roleData)
+    void AddRoles(List<RoleData> roleData)
     {
         foreach (var role in roleData)
         {
+            if (SwapEntries.Exists(x => x.RoleData == role))
+                continue;
+
             GameObject roleEntryObject = Instantiate(SwapEntry);
             roleEntryObject.name = "Entry:" + role.RoleName;
 

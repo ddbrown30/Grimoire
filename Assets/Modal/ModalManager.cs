@@ -40,5 +40,6 @@ public class ModalManager : MonoBehaviour
     {
         ModalPanelObject.SetActive(false);
         ModalDialogPanel.gameObject.SetActive(false);
+        ModalSwapRolePanel.gameObject.SetActive(false);
     }
 }

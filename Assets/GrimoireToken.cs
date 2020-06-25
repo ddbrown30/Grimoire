@@ -226,8 +226,6 @@ public class GrimoireToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IDr
         {
             token.transform.localScale = newScale;
         }
-        if(AlignmentToken)
-            AlignmentToken.transform.localScale = newScale;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -287,8 +285,8 @@ public class GrimoireToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IDr
             TokenContextMenu.transform.localScale = Vector3.one;
             TokenContextMenu.transform.localPosition = Vector3.zero;
 
-            TokenContextMenu.AddMenuItem("Change Role", ChangeRole);
-            TokenContextMenu.AddMenuItem("Swap Alignment", SwapAlignment);
+            TokenContextMenu.AddMenuItem("Change role", ChangeRole);
+            TokenContextMenu.AddMenuItem("Swap alignment", SwapAlignment);
             TokenContextMenu.FinaliseMenu();
 
             ContextMenu.HideAllMenus();//hide other menus

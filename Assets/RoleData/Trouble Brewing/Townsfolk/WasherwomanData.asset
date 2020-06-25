@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: WasherwomanData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1018816746095938, guid: b07290d5628c8c840949a908ce4e6556, type: 3}
   RoleName: Washerwoman
+  ScriptToolId: washerwoman
   RoleType: 0
+  GameEdition: 1
   FirstNightOrder: 24
   OtherNightOrder: -1
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 69c74cd663784e341baae6b5cd0abc8d, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: 82860f664ab0cbe4cbe88d83a7645ee4, type: 3}
   - {fileID: 21300000, guid: f30f68199083931489ef252b736b9b2e, type: 3}
+  AddToGrimoire: 1

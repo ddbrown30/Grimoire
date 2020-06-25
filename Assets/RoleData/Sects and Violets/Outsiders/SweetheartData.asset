@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: SweetheartData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: c9d69f5301224404ea0dc6df903b7097, type: 3}
   RoleName: Sweetheart
+  ScriptToolId: sweetheart
   RoleType: 1
+  GameEdition: 4
   FirstNightOrder: -1
   OtherNightOrder: 43
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 2db347154ad03ab4cace7c04563ac9a2, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: e42d066e0e26cf24e92faa0c3364c7a1, type: 3}
+  AddToGrimoire: 1

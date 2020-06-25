@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: DrunkData
   m_EditorClassIdentifier: 
   RoleName: Drunk
+  ScriptToolId: drunk
   RoleType: 1
+  GameEdition: 1
   FirstNightOrder: -1
   OtherNightOrder: -1
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 9984bbaf32ddd964cb7f6ab407aac110, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: 295eded834b5bcb4bba5e855ff0ed78a, type: 3}

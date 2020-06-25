@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: PitHagData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: 913ad1cab8f9ece40acb0a80f3eee242, type: 3}
   RoleName: Pit Hag
+  ScriptToolId: pit_hag
   RoleType: 2
+  GameEdition: 4
   FirstNightOrder: -1
   OtherNightOrder: 21
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 7e0fdbb93393aef4988c06f753638736, type: 3}
   HelperTokenSprites: []
+  AddToGrimoire: 1

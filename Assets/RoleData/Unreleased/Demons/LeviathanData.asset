@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: LeviathanData
   m_EditorClassIdentifier: 
   RoleName: Leviathan
+  ScriptToolId: leviathan
   RoleType: 3
+  GameEdition: 8
   FirstNightOrder: 10
   OtherNightOrder: -1
   IsNightOrderAfterDawn: 1

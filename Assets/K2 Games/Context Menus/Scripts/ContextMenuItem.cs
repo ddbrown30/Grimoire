@@ -2,14 +2,15 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class ContextMenuItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public delegate void StandardDelegate();
 
-    public Text textLabel;
+    public TMP_Text textLabel;
     public ContextMenu parentMenu, subMenu;//Which menu this is a part of and which sub menu is opened when selected
-    public Text subMenuArrow;//enabled when there is a sub menu
+    public TMP_Text subMenuArrow;//enabled when there is a sub menu
 
     [HideInInspector]
     public bool keepMenuOpen = false;

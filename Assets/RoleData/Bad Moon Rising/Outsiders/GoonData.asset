@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: GoonData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: 90dc3cf21494d0f4ba9f67f431ff590f, type: 3}
   RoleName: Goon
+  ScriptToolId: goon
   RoleType: 1
+  GameEdition: 2
   FirstNightOrder: 38
   OtherNightOrder: 59
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 44e301ed1d64b544c91e5b0bec80ecf5, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: ec502fec0f4f57246843169b9c4e416c, type: 3}
+  AddToGrimoire: 1

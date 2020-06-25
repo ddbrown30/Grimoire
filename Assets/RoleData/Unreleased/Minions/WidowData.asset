@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: WidowData
   m_EditorClassIdentifier: 
   RoleName: Widow
+  ScriptToolId: widow
   RoleType: 2
+  GameEdition: 8
   FirstNightOrder: 15
   OtherNightOrder: -1
   IsNightOrderAfterDawn: 0

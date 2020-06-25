@@ -222,7 +222,7 @@ public class GrimoireManager : MonoBehaviour, IPointerClickHandler
             }
         }
 
-        RoleCountText.text = string.Format("T: {0} | O: {1} | M: {2} | D: {3}", townsfolk, outsiders, minions, demons);
+        RoleCountText.text = string.Format("<color=#009BFF>T: {0}</color> | <color=#009BFF>O: {1}</color> | <color=\"red\">M: {2}</color> | <color=\"red\">D: {3}</color>", townsfolk, outsiders, minions, demons);
     }
 
     public int GetIndexFromPosition(Vector2 position)
@@ -357,7 +357,7 @@ public class GrimoireManager : MonoBehaviour, IPointerClickHandler
             GrimoireContextMenu.transform.localPosition = Vector3.zero;
 
             GrimoireContextMenu.AddMenuItem("Reset Grimoire", OnClickResetGrimoire);
-            GrimoireContextMenu.AddMenuItem("Reset Helper Tokens", OnClickResetHelperTokens);
+            GrimoireContextMenu.AddMenuItem("Reset helper tokens", OnClickResetHelperTokens);
             GrimoireContextMenu.AddMenuItem("Randomize player positions", OnClickRandomize);
 
             string namesToggleText = PlayerNamesVisible ? "Hide player names" : "Show player names";

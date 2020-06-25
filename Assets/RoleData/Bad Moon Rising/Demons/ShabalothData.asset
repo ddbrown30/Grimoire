@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7ccd67ba9e4094795527d5f1133ae0, type: 3}
   m_Name: ShabalothData
   m_EditorClassIdentifier: 
-  RolePrefab: {fileID: 1481770009761832, guid: 04a12a945cbfa3f499fb8805070fc831, type: 3}
   RoleName: Shabaloth
+  ScriptToolId: shabaloth
   RoleType: 3
+  GameEdition: 2
   FirstNightOrder: -1
   OtherNightOrder: 28
+  IsNightOrderAfterDawn: 0
   RoleTokenSprite: {fileID: 21300000, guid: 57caa64b785f3e94182b1bccb44f94e2, type: 3}
   HelperTokenSprites:
   - {fileID: 21300000, guid: 495e9b155c632c44eb4fdba6f0ac14af, type: 3}
   - {fileID: 21300000, guid: b9d186fb4ee205a49a1007c8563f9126, type: 3}
   - {fileID: 21300000, guid: 293bad999ced1a748821ee4ff6a2286c, type: 3}
+  AddToGrimoire: 1
