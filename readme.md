@@ -26,7 +26,6 @@ Right clicking in the open area of the Grimoire will open up a context menu with
 * Reset Grimoire - Selecting this option will delete all tokens and reset the Grimoire back to role selection.
 * Reset helper tokens - Selecting this option will reset the position of all helper tokens back to their initial positions. This is useful if you've placed a helper token somewhere you cannot reach.
 * Randomize player positions - Selecting this option will randomize the position of the tokens in the seating arrangement. Since we often have no way of doing the bag draw when playing online, this randomization will allow you to assign out roles completely randomly.
-* Show/Hide player names - Selecting this option will show or hide player name fields above the players.
 
 Right clicking on a role token will open up a context menu with the following options:
 * Change role - Selecting this option will open a dialog to select a new role for this player. Selecting a new role will delete the existing helper tokens for that player and create the tokens for the new role.
