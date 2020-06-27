@@ -41,6 +41,12 @@ public class OptionsPanelManager : MonoBehaviour, IPointerEnterHandler, IPointer
         RadiusSlider.value = DefaultRadiusScale;
         BackgroundSelector.SetImageIndex(DefaultBackgroundIndex);
         PlayerNamesToggle.isOn = DefaultPlayerNames;
+
+        PlayerPrefs.SetFloat("RoleScale", RoleScaleSlider.value);
+        PlayerPrefs.SetFloat("HelperScale", HelperScaleSlider.value);
+        PlayerPrefs.SetFloat("Radius", RadiusSlider.value);
+        PlayerPrefs.SetInt("BackgroundIndex", BackgroundSelector.CurrentIndex);
+        PlayerPrefs.SetInt("PlayerNames", Convert.ToInt32(PlayerNamesToggle.isOn));
     }
 
     public void OpenOptionsPanel()
