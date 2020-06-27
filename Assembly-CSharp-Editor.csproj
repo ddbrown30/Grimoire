@@ -724,6 +724,9 @@
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Projects/Grimoire/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.quicksearch">
+      <HintPath>C:/Projects/Grimoire/Library/ScriptAssemblies/com.unity.quicksearch.dll</HintPath>
+    </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>C:/Projects/Grimoire/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>

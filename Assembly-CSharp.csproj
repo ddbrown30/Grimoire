@@ -62,13 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AlignmentToken.cs" />
-    <Compile Include="Assets\CustomScriptReader.cs" />
-    <Compile Include="Assets\GrimoireManager.cs" />
-    <Compile Include="Assets\GrimoireShuffle.cs" />
-    <Compile Include="Assets\GrimoireToken.cs" />
-    <Compile Include="Assets\HelpPanel.cs" />
-    <Compile Include="Assets\HelperToken.cs" />
+    <Compile Include="Assets\BackgroundImagePreviewer.cs" />
+    <Compile Include="Assets\BackgroundImageSelector.cs" />
     <Compile Include="Assets\K2 Games\Common\Note.cs" />
     <Compile Include="Assets\K2 Games\Context Menus\Scripts\ContextMenu.cs" />
     <Compile Include="Assets\K2 Games\Context Menus\Scripts\ContextMenuItem.cs" />
@@ -87,32 +82,43 @@
     <Compile Include="Assets\Modal\DialogPanel.cs" />
     <Compile Include="Assets\Modal\ModalManager.cs" />
     <Compile Include="Assets\Modal\ProgramNotes.cs" />
-    <Compile Include="Assets\NightEntry.cs" />
-    <Compile Include="Assets\NightManager.cs" />
-    <Compile Include="Assets\RandomizeGrimoireScript.cs" />
-    <Compile Include="Assets\ResetWindowResolution.cs" />
-    <Compile Include="Assets\RoleData.cs" />
-    <Compile Include="Assets\RoleEntry.cs" />
-    <Compile Include="Assets\RoleSelectionManager.cs" />
+    <Compile Include="Assets\Scripts\AlignmentToken.cs" />
+    <Compile Include="Assets\Scripts\CustomScriptReader.cs" />
+    <Compile Include="Assets\Scripts\GrimoireManager.cs" />
+    <Compile Include="Assets\Scripts\GrimoireShuffle.cs" />
+    <Compile Include="Assets\Scripts\GrimoireToken.cs" />
+    <Compile Include="Assets\Scripts\HelpPanel.cs" />
+    <Compile Include="Assets\Scripts\HelperToken.cs" />
+    <Compile Include="Assets\Scripts\NightEntry.cs" />
+    <Compile Include="Assets\Scripts\NightManager.cs" />
+    <Compile Include="Assets\Scripts\OptionsPanelManager.cs" />
+    <Compile Include="Assets\Scripts\RandomizeGrimoireScript.cs" />
+    <Compile Include="Assets\Scripts\ResetWindowResolution.cs" />
+    <Compile Include="Assets\Scripts\RoleData.cs" />
+    <Compile Include="Assets\Scripts\RoleEntry.cs" />
+    <Compile Include="Assets\Scripts\RoleSelectionManager.cs" />
+    <Compile Include="Assets\Scripts\StepManager.cs" />
+    <Compile Include="Assets\Scripts\SwapEntry.cs" />
+    <Compile Include="Assets\Scripts\SwapRolePanel.cs" />
+    <Compile Include="Assets\Scripts\TakeScreenshotScript.cs" />
+    <Compile Include="Assets\Scripts\ToolsDock.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\IStandaloneFileBrowser.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowser.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserEditor.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserLinux.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserWindows.cs" />
-    <Compile Include="Assets\StepManager.cs" />
-    <Compile Include="Assets\SwapEntry.cs" />
-    <Compile Include="Assets\SwapRolePanel.cs" />
-    <Compile Include="Assets\TakeScreenshotScript.cs" />
-    <Compile Include="Assets\ToolsDock.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
@@ -738,6 +744,9 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Projects/Grimoire/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.quicksearch">
+      <HintPath>C:/Projects/Grimoire/Library/ScriptAssemblies/com.unity.quicksearch.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>C:/Projects/Grimoire/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
