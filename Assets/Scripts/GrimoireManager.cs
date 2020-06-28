@@ -32,7 +32,6 @@ public class GrimoireManager : MonoBehaviour, IPointerClickHandler
     public Slider HelperScaleSlider;
 
     public Image BackgroundImage;
-    public TMP_Dropdown BackgroundSelectDropdown;
 
     private float TownRadius;
     public float MinTokenRadius = 300f;

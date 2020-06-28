@@ -62,8 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BackgroundImagePreviewer.cs" />
-    <Compile Include="Assets\BackgroundImageSelector.cs" />
     <Compile Include="Assets\K2 Games\Common\Note.cs" />
     <Compile Include="Assets\K2 Games\Context Menus\Scripts\ContextMenu.cs" />
     <Compile Include="Assets\K2 Games\Context Menus\Scripts\ContextMenuItem.cs" />
@@ -83,6 +81,7 @@
     <Compile Include="Assets\Modal\ModalManager.cs" />
     <Compile Include="Assets\Modal\ProgramNotes.cs" />
     <Compile Include="Assets\Scripts\AlignmentToken.cs" />
+    <Compile Include="Assets\Scripts\BackgroundImageSelector.cs" />
     <Compile Include="Assets\Scripts\CustomScriptReader.cs" />
     <Compile Include="Assets\Scripts\GrimoireManager.cs" />
     <Compile Include="Assets\Scripts\GrimoireShuffle.cs" />
