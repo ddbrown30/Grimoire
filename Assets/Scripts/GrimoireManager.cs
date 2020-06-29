@@ -21,8 +21,8 @@ public class GrimoireManager : MonoBehaviour, IPointerClickHandler
 
     public GameObject RoleTokenAttach;
     public GameObject HelperTokenAttach;
+    public GameObject HelperTokenFreeTransform;    
     public GameObject BluffTokenAttach;
-    public GameObject AlignmentTokenAttach;
 
     public Image HoverImage;
 
@@ -326,7 +326,7 @@ public class GrimoireManager : MonoBehaviour, IPointerClickHandler
         PlayerNamesVisible = visible;
         foreach (var token in RoleTokens)
         {
-            token.NameText.gameObject.SetActive(visible);
+            token.SetPlayerNameVisible(visible);
         }
     }
 

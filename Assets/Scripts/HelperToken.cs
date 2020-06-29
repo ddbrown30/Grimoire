@@ -10,7 +10,7 @@ public class HelperToken : MonoBehaviour, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        gameObject.transform.SetParent(GrimoireManager.Instance.transform);
+        gameObject.transform.SetParent(GrimoireManager.Instance.HelperTokenFreeTransform.transform);
         gameObject.transform.transform.position = Input.mousePosition;
         GetComponent<RectTransform>().SetAsLastSibling();
 

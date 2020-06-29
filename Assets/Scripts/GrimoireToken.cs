@@ -215,6 +215,15 @@ public class GrimoireToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IDr
     {
         IsBluffToken = true;
         GetComponentInChildren<Button>().enabled = false;
+        NameText.gameObject.SetActive(false);
+    }
+
+    public void SetPlayerNameVisible(bool visible)
+    {
+        if (IsBluffToken)
+            return;
+
+        NameText.gameObject.SetActive(visible);
     }
 
     public void SetRoleTokenScale(float scaleNormalized)
