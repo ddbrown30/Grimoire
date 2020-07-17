@@ -78,7 +78,6 @@ public class GrimoireManager : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            grimoireToken.gameObject.SetActive(false);
             HiddenTokens.Add(grimoireToken);
         }
 

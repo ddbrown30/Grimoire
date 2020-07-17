@@ -61,6 +61,11 @@ public class GrimoireToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IDr
         {
             CreateAlignmentToken();
         }
+
+        if(RoleData.AddToGrimoire == false && IsBluffToken == false)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void Update()
