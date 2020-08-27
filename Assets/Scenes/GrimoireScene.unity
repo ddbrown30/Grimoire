@@ -1554,7 +1554,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 85895033}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99994737
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14289,7 +14289,7 @@ MonoBehaviour:
     to the Grimoire on the right. If that role comes with any helper tokens, those
     will also be added. Selecting the role again will remove them. As you select
     roles, the role count display will update telling you how many of each role type
-    (Townsfolk, Minions, etc.) you ahve selected. This is here simply so that you
+    (Townsfolk, Minions, etc.) you have selected. This is here simply so that you
     do not need to manually count your roles each time. Once you''ve selected your
     roles, press the Next button to continue.
 
